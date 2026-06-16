@@ -1,5 +1,9 @@
 # InsightX — Real-Time Streaming Analytics Platform
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://insightx-8vcaart3xxzozeqfhfnf6y.streamlit.app/)
+
+**[Live Demo](https://insightx-8vcaart3xxzozeqfhfnf6y.streamlit.app/)**
+
 A simulation of a production-grade real-time analytics pipeline, built as part of the **System Design Final Examination**. InsightX processes streaming events from multiple heterogeneous data sources, aggregates metrics using tumbling time windows, and visualises everything on an interactive Streamlit dashboard.
 
 ---
