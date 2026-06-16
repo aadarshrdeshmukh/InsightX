@@ -1,21 +1,19 @@
-# InsightX — Real-Time Analytics System
+# InsightX — Real-Time Streaming Analytics Platform
 
-A simulation of a production-grade real-time analytics pipeline, designed as part of the **System Design Final Examination**. InsightX processes millions of streaming events from multiple data sources, aggregates metrics using tumbling time windows, and outputs live analytics dashboards — mirroring systems used by companies like Google, Uber, and Netflix.
+A simulation of a production-grade real-time analytics pipeline, built as part of the **System Design Final Examination**. InsightX processes streaming events from multiple heterogeneous data sources, aggregates metrics using tumbling time windows, and visualises everything on an interactive Streamlit dashboard.
 
 ---
 
-## Project Overview
+## Overview
 
 InsightX demonstrates a complete real-time data pipeline with:
 
 - **Multi-source data producers** — web, mobile, IoT sensors, payment gateway, CDN logs
-- **In-memory message broker** — simulates Apache Kafka with per-source topic queues
-- **Parallel stream processors** — multi-threaded consumers with retry and fault tolerance
-- **Tumbling window aggregation** — count, avg, min, max per 5-second window
-- **Dual-layer storage** — hot store (Redis-like dict) + cold store (Cassandra-like deque)
-- **Live terminal dashboard** — real-time metrics printed every 5 seconds
+- **Simulated Kafka broker** — in-memory message broker with per-source topic queues and back-pressure
+- **Flink-style stream processing** — tumbling window aggregation (count, avg, min, max) with retry logic
+- **Polyglot persistence** — hot store (Redis-like) + cold store (Cassandra-like)
 - **Dead-letter queue** — failed events captured after max retries
-- **JSON export** — full analytics output written to `analytics_output.json`
+- **Interactive dashboard** — real-time charts, gauges, and window history via Streamlit + Plotly
 
 ---
 
@@ -24,172 +22,137 @@ InsightX demonstrates a complete real-time data pipeline with:
 ```
 [Web App]  ─┐
 [Mobile]   ─┤                                      ┌─ Redis (Hot)  ─┐
-[IoT]      ─┼──> Kafka Broker ──> Flink Processor ─┤                ├──> Grafana
-[Payments] ─┤    (Queue)          (Windowing)       └─ Cassandra     ─┘   Dashboard
+[IoT]      ─┼──> Kafka Broker ──> Flink Processor ─┤                ├──> Dashboard
+[Payments] ─┤    (Queue)          (Windowing)       └─ Cassandra    ─┘   (Streamlit)
 [CDN Logs] ─┘                          │
                                   Dead-Letter Q
 ```
 
-See `architecture_diagram.png` for the detailed visual diagram.
+Architecture diagrams are available in `assets/diagrams/` and on the Architecture page of the dashboard.
 
 ---
 
 ## Technology Stack
 
-| Component        | Simulated By          | Real-World Equivalent         |
-|------------------|-----------------------|-------------------------------|
-| Message Broker   | `queue.Queue`         | Apache Kafka                  |
-| Stream Processor | `threading.Thread`    | Apache Flink / Spark Streaming|
-| Hot Storage      | Python `dict`         | Redis                         |
-| Cold Storage     | `collections.deque`   | Apache Cassandra              |
-| Dashboard        | Terminal print loop   | Grafana                       |
-| Orchestration    | Python threading      | Kubernetes + Docker           |
+| Component        | Simulated By          | Production Equivalent          |
+|------------------|-----------------------|--------------------------------|
+| Message Broker   | `queue.Queue`         | Apache Kafka 3.x               |
+| Stream Processor | `threading.Thread`    | Apache Flink 1.18              |
+| Hot Storage      | Python `dict`         | Redis 7 Cluster                |
+| Cold Storage     | `collections.deque`   | Apache Cassandra 4             |
+| Dashboard        | Streamlit + Plotly    | Grafana 10 + Prometheus        |
+| Orchestration    | Single process        | Kubernetes + Docker            |
 
 ---
 
-## Dependencies
+## Setup
 
-Python 3.8+ is required. The simulation uses only the **Python standard library** — no external packages needed to run `main.py`.
+### Prerequisites
 
-```
-python >= 3.8
-queue       (stdlib)
-threading   (stdlib)
-collections (stdlib)
-dataclasses (stdlib)
-json        (stdlib)
-hashlib     (stdlib)
-logging     (stdlib)
-random      (stdlib)
-time        (stdlib)
-datetime    (stdlib)
-```
+- Python 3.10+
 
-To generate the architecture diagram (optional):
-```bash
-pip install matplotlib
-```
-
----
-
-## Setup Instructions
-
-### 1. Clone the Repository
+### Install Dependencies
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/insightx-realtime-analytics.git
-cd insightx-realtime-analytics
+pip install -r requirements.txt
 ```
 
-### 2. (Optional) Create a Virtual Environment
+### Run the Dashboard
 
 ```bash
-python -m venv venv
-source venv/bin/activate        # macOS / Linux
-venv\Scripts\activate           # Windows
+streamlit run app.py
 ```
 
-### 3. Install Optional Dependencies
-
-```bash
-pip install matplotlib           # only needed for architecture diagram
-```
-
----
-
-## Execution Steps
-
-### Run the Main Simulation
+### Run the CLI Simulation (no dependencies)
 
 ```bash
 python main.py
 ```
 
-This will:
-1. Start 5 producer threads (one per data source)
-2. Start 2 parallel consumer/processor threads
-3. Print a live dashboard every 5 seconds for 30 seconds
-4. Export final results to `analytics_output.json`
+---
 
-### Expected Output
+## Dashboard Pages
 
-```
-==================================================================
-   InsightX Real-Time Analytics System — Starting Simulation
-   Duration: 30s | Window: 5s | Consumers: 2
-==================================================================
+| Page | Description |
+|------|-------------|
+| **Home** | System overview, quick-start metrics, component cards |
+| **Simulation** | Live simulation with real-time charts, throughput gauge, window history |
+| **Results** | Post-run analysis with JSON/CSV export |
+| **Architecture** | Interactive architecture viewer with embedded diagrams |
 
-12:56:33 [Producer-web] INFO: Producer started for source: web
-...
+---
 
-╔════════════════════════════════════════════════════════════════╗
-║  InsightX Real-Time Analytics Dashboard  [12:56:38]          ║
-╠════════════════════════════════════════════════════════════════╣
-║  LIVE METRICS                                                ║
-║    Total Events Processed : 477                              ║
-║    Total Value Ingested   : 247547.41                        ║
-...
-```
+## Configuration
 
-### Generate Architecture Diagram
+Adjust simulation parameters from the dashboard sidebar, or edit `config.py`:
 
-```bash
-python gen_diagram.py
-# Output: architecture_diagram.png
-```
-
-### Configuration
-
-Edit `Config` class in `main.py` to adjust simulation parameters:
-
-```python
-class Config:
-    WINDOW_SIZE_SEC      = 5     # tumbling window size in seconds
-    SIMULATION_DURATION  = 30    # total run time in seconds
-    CONSUMER_THREADS     = 2     # number of parallel stream processors
-    PRODUCER_INTERVAL    = 0.05  # seconds between producer bursts
-    MAX_RETRIES          = 3     # retries before dead-letter queue
-```
+| Parameter | Range | Default | Description |
+|-----------|-------|---------|-------------|
+| Window Size | 3–15 sec | 5 sec | Tumbling window duration |
+| Duration | 10–120 sec | 30 sec | Total simulation run time |
+| Producer Interval | 20–200 ms | 50 ms | Time between event bursts |
 
 ---
 
 ## Project Structure
 
 ```
-insightx-realtime-analytics/
-│
-├── main.py                   # Complete simulation (producers, broker, processor, dashboard)
-├── gen_diagram.py            # Architecture diagram generator
-├── architecture_diagram.png  # System design diagram
-├── analytics_output.json     # Auto-generated simulation results
-├── README.md                 # This file
-└── documentation.pdf         # Full project documentation
+InsightX_Analytics_Submission/
+├── app.py                          # Streamlit entry point
+├── config.py                       # Simulation constants
+├── main.py                         # CLI simulation (stdlib only)
+├── requirements.txt                # streamlit, plotly, pandas
+├── README.md
+├── documentation.pdf               # Full system design documentation
+├── analytics_output.json           # Sample simulation output
+├── .streamlit/
+│   └── config.toml                 # Theme configuration
+├── assets/
+│   ├── style.css                   # Dashboard styling
+│   ├── screenshot_home.png
+│   ├── screenshot_simulation.png
+│   └── diagrams/
+│       ├── Full Pipeline.png
+│       ├── Ingestion.png
+│       ├── Stream processing & windowing.png
+│       ├── Storage design — polyglot persistence.png
+│       ├── Scaliing.png
+│       └── Fault tolerance & failure recovery.png
+├── core/
+│   ├── __init__.py
+│   ├── broker.py                   # MessageBroker (Kafka simulation)
+│   ├── engine.py                   # SimulationEngine (orchestrator)
+│   └── models.py                   # Event, WindowMetrics dataclasses
+└── ui/
+    ├── __init__.py
+    ├── home_page.py
+    ├── simulation_page.py
+    ├── results_page.py
+    └── architecture_page.py
 ```
 
 ---
 
-## Key Concepts Demonstrated
+## Deploy on Streamlit Cloud
 
-| Concept               | Implementation in Code                              |
-|-----------------------|-----------------------------------------------------|
-| Event-driven pipeline | `DataProducer` → `MessageBroker` → `StreamProcessor`|
-| Tumbling windows      | `WindowMetrics` class, 5-second non-overlapping     |
-| Fault tolerance       | Retry logic + Dead-Letter Queue in `StreamProcessor`|
-| Horizontal scaling    | Multiple `Processor` threads (configurable)         |
-| Dual-layer storage    | `AnalyticsStore` with hot dict + cold deque         |
-| Thread safety         | `threading.Lock` / `RLock` on all shared state      |
+1. Push this repo to GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Connect your GitHub repo
+4. Set **Main file path** to `app.py`
+5. Deploy
 
 ---
 
-## GitHub Repository
+## Key Concepts
 
-> **https://github.com/YOUR_USERNAME/insightx-realtime-analytics**
-
-*(Replace with your actual GitHub repository URL after uploading)*
+| Concept               | Implementation                                       |
+|-----------------------|------------------------------------------------------|
+| Event-driven pipeline | `DataProducer` → `MessageBroker` → `StreamProcessor` |
+| Tumbling windows      | `WindowMetrics` — 5s non-overlapping windows          |
+| Fault tolerance       | Retry logic + Dead-Letter Queue                      |
+| Polyglot persistence  | Hot dict (Redis) + cold deque (Cassandra)            |
+| Thread safety         | `threading.RLock` on all shared state                |
 
 ---
-
-## Author
 
 Submitted as part of the **System Design Final Examination**
-Subject: System Design | Real-Time Analytics Systems
