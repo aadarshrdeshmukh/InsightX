@@ -1,0 +1,328 @@
+/* ═══════════════════════════════════════════════════════════════
+   InsightX — BRUTALIST B&W THEME
+   Raw, bold, high-contrast, no curves, no shadows, no gradients.
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;900&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+    --bg:          #ffffff;
+    --surface:     #f5f5f5;
+    --black:       #000000;
+    --white:       #ffffff;
+    --gray:        #888888;
+    --gray-light:  #e0e0e0;
+    --border:      2px solid #000000;
+    --border-thin: 1px solid #000000;
+    --font-body:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono:   'Space Mono', 'Courier New', monospace;
+}
+
+/* ── Global ─────────────────────────────────────────────────── */
+html, body, [class*="css"] {
+    font-family: var(--font-body) !important;
+    color: var(--black);
+}
+
+.stApp {
+    background: var(--bg);
+}
+
+/* ── Sidebar ────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background: var(--bg) !important;
+    border-right: 3px solid var(--black) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stMarkdown"] {
+    color: var(--black);
+}
+
+[data-testid="stSidebar"] .stButton > button {
+    background: transparent !important;
+    border: var(--border) !important;
+    color: var(--black) !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 0.8rem !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    font-size: 0.82rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    transition: all 0.05s ease !important;
+    text-align: left !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: var(--black) !important;
+    color: var(--white) !important;
+}
+
+[data-testid="stSidebar"] button[data-testid="baseButton-primary"] {
+    background: var(--black) !important;
+    color: var(--white) !important;
+    border: var(--border) !important;
+}
+
+/* ── Main Content ───────────────────────────────────────────── */
+.main .block-container {
+    padding-top: 2rem;
+    max-width: 1200px;
+}
+
+/* ── Headings ───────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+    color: var(--black) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 2rem !important;
+    border-bottom: 4px solid var(--black);
+    padding-bottom: 0.4rem;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 1.5rem !important;
+}
+
+h3 {
+    font-size: 1.1rem !important;
+    letter-spacing: 1px;
+}
+
+/* ── Metric Cards ───────────────────────────────────────────── */
+[data-testid="stMetric"] {
+    background: var(--bg);
+    border: var(--border);
+    border-radius: 0 !important;
+    padding: 1rem 1.2rem;
+}
+
+[data-testid="stMetric"]:hover {
+    background: var(--black);
+}
+
+[data-testid="stMetric"]:hover [data-testid="stMetricLabel"],
+[data-testid="stMetric"]:hover [data-testid="stMetricValue"] {
+    color: var(--white) !important;
+}
+
+[data-testid="stMetricLabel"] {
+    color: var(--gray) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+[data-testid="stMetricValue"] {
+    color: var(--black) !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    font-size: 1.6rem !important;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.stButton > button {
+    border-radius: 0 !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    transition: all 0.05s ease !important;
+}
+
+.stButton > button[data-testid="baseButton-primary"] {
+    background: var(--black) !important;
+    border: var(--border) !important;
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem !important;
+}
+
+.stButton > button[data-testid="baseButton-primary"]:hover {
+    background: var(--white) !important;
+    color: var(--black) !important;
+}
+
+.stButton > button[data-testid="baseButton-secondary"] {
+    background: var(--bg) !important;
+    border: var(--border) !important;
+    color: var(--black) !important;
+}
+
+.stButton > button[data-testid="baseButton-secondary"]:hover {
+    background: var(--black) !important;
+    color: var(--white) !important;
+}
+
+/* ── DataFrames ─────────────────────────────────────────────── */
+[data-testid="stDataFrame"] {
+    border-radius: 0 !important;
+    overflow: hidden;
+    border: var(--border);
+}
+
+/* ── Expanders ──────────────────────────────────────────────── */
+.streamlit-expanderHeader {
+    background: var(--surface) !important;
+    border-radius: 0 !important;
+    color: var(--black) !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Sliders ────────────────────────────────────────────────── */
+[data-testid="stSlider"] {
+    padding: 0.5rem 0;
+}
+
+/* Progress bar: uses Streamlit default styling */
+
+/* ── Dividers ───────────────────────────────────────────────── */
+hr {
+    border-color: var(--black) !important;
+    border-width: 2px !important;
+}
+
+/* ── Download Buttons ───────────────────────────────────────── */
+.stDownloadButton > button {
+    background: var(--bg) !important;
+    border: var(--border) !important;
+    color: var(--black) !important;
+    border-radius: 0 !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.stDownloadButton > button:hover {
+    background: var(--black) !important;
+    color: var(--white) !important;
+}
+
+/* ── Tabs ───────────────────────────────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0;
+    border-bottom: 3px solid var(--black);
+}
+
+.stTabs [data-baseweb="tab"] {
+    color: var(--gray);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    border-radius: 0;
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--black) !important;
+    font-weight: 700;
+    border-bottom: 3px solid var(--black);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--black);
+}
+
+/* ── Brutalist Card ─────────────────────────────────────────── */
+.br-card {
+    background: var(--bg);
+    border: var(--border);
+    padding: 1.5rem;
+    transition: all 0.05s ease;
+    height: 100%;
+}
+
+.br-card:hover {
+    background: var(--black);
+    color: var(--white);
+}
+
+.br-card:hover .br-card-title,
+.br-card:hover .br-card-desc,
+.br-card:hover .br-card-icon img {
+    color: var(--white);
+    filter: brightness(0) invert(1) !important;
+}
+
+.br-card-icon {
+    margin-bottom: 0.6rem;
+}
+
+.br-card-icon img {
+    filter: brightness(0);
+    transition: filter 0.05s ease;
+}
+
+.br-card-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 0.4rem;
+    transition: color 0.05s ease;
+}
+
+.br-card-desc {
+    font-size: 0.78rem;
+    color: var(--gray);
+    line-height: 1.5;
+    margin: 0;
+    transition: color 0.05s ease;
+}
+
+/* ── Status Badge ───────────────────────────────────────────── */
+.br-badge {
+    border: var(--border);
+    padding: 0.8rem;
+    text-align: center;
+}
+
+.br-badge-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gray);
+}
+
+.br-badge-value {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-top: 2px;
+}
+
+.br-badge-sub {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--gray);
+    margin-top: 2px;
+}

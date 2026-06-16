@@ -1,0 +1,357 @@
+{
+  "simulation_end": "2026-06-12T00:36:39.878270",
+  "total_published": 8464,
+  "total_consumed": 8213,
+  "total_produced": 8282,
+  "dlq_events": 0,
+  "windows_captured": 14,
+  "live_metrics": {
+    "total_events": 8213,
+    "total_value": 4094175.100000001,
+    "error_count": 0
+  },
+  "window_history": [
+    {
+      "window_start": "00:36:05",
+      "window_end": "00:36:10",
+      "event_count": 35,
+      "avg_value": 534.8,
+      "min_value": 28.24,
+      "max_value": 997.35,
+      "source_breakdown": {
+        "web": 13,
+        "iot_sensor": 12,
+        "cdn_log": 10
+      },
+      "type_breakdown": {
+        "scroll": 4,
+        "temperature": 5,
+        "404_error": 2,
+        "cache_miss": 3,
+        "motion_detect": 2,
+        "cache_hit": 1,
+        "form_submit": 4,
+        "battery_low": 5,
+        "bandwidth_spike": 4,
+        "page_view": 2,
+        "click": 3
+      }
+    },
+    {
+      "window_start": "00:36:05",
+      "window_end": "00:36:10",
+      "event_count": 28,
+      "avg_value": 495.27,
+      "min_value": 33.17,
+      "max_value": 946.1,
+      "source_breakdown": {
+        "mobile": 15,
+        "payment_gateway": 13
+      },
+      "type_breakdown": {
+        "app_open": 4,
+        "transaction": 5,
+        "auth_check": 3,
+        "tap": 4,
+        "chargeback": 2,
+        "push_click": 4,
+        "refund": 3,
+        "crash_report": 3
+      }
+    },
+    {
+      "window_start": "00:36:10",
+      "window_end": "00:36:15",
+      "event_count": 811,
+      "avg_value": 494.65,
+      "min_value": 7.89,
+      "max_value": 995.51,
+      "source_breakdown": {
+        "cdn_log": 276,
+        "web": 268,
+        "iot_sensor": 267
+      },
+      "type_breakdown": {
+        "404_error": 66,
+        "scroll": 74,
+        "motion_detect": 59,
+        "temperature": 63,
+        "page_view": 85,
+        "bandwidth_spike": 70,
+        "click": 44,
+        "battery_low": 77,
+        "form_submit": 65,
+        "humidity": 68,
+        "cache_hit": 75,
+        "cache_miss": 65
+      }
+    },
+    {
+      "window_start": "00:36:10",
+      "window_end": "00:36:15",
+      "event_count": 540,
+      "avg_value": 507.68,
+      "min_value": 4.63,
+      "max_value": 997.09,
+      "source_breakdown": {
+        "mobile": 263,
+        "payment_gateway": 277
+      },
+      "type_breakdown": {
+        "tap": 70,
+        "refund": 64,
+        "push_click": 68,
+        "chargeback": 70,
+        "transaction": 74,
+        "crash_report": 70,
+        "auth_check": 69,
+        "app_open": 55
+      }
+    },
+    {
+      "window_start": "00:36:15",
+      "window_end": "00:36:20",
+      "event_count": 553,
+      "avg_value": 485.74,
+      "min_value": 2.67,
+      "max_value": 997.49,
+      "source_breakdown": {
+        "mobile": 273,
+        "payment_gateway": 280
+      },
+      "type_breakdown": {
+        "tap": 55,
+        "chargeback": 73,
+        "app_open": 72,
+        "auth_check": 68,
+        "refund": 71,
+        "crash_report": 76,
+        "push_click": 70,
+        "transaction": 68
+      }
+    },
+    {
+      "window_start": "00:36:15",
+      "window_end": "00:36:20",
+      "event_count": 760,
+      "avg_value": 501.88,
+      "min_value": 4.27,
+      "max_value": 998.51,
+      "source_breakdown": {
+        "web": 257,
+        "iot_sensor": 260,
+        "cdn_log": 243
+      },
+      "type_breakdown": {
+        "click": 65,
+        "temperature": 51,
+        "404_error": 63,
+        "cache_miss": 67,
+        "bandwidth_spike": 62,
+        "page_view": 64,
+        "humidity": 76,
+        "scroll": 56,
+        "battery_low": 57,
+        "cache_hit": 51,
+        "form_submit": 72,
+        "motion_detect": 76
+      }
+    },
+    {
+      "window_start": "00:36:20",
+      "window_end": "00:36:25",
+      "event_count": 841,
+      "avg_value": 494.67,
+      "min_value": 1.16,
+      "max_value": 999.97,
+      "source_breakdown": {
+        "cdn_log": 269,
+        "web": 284,
+        "iot_sensor": 288
+      },
+      "type_breakdown": {
+        "404_error": 69,
+        "click": 66,
+        "form_submit": 66,
+        "humidity": 73,
+        "cache_miss": 68,
+        "battery_low": 73,
+        "page_view": 69,
+        "temperature": 75,
+        "cache_hit": 65,
+        "motion_detect": 67,
+        "bandwidth_spike": 67,
+        "scroll": 83
+      }
+    },
+    {
+      "window_start": "00:36:20",
+      "window_end": "00:36:25",
+      "event_count": 560,
+      "avg_value": 497.75,
+      "min_value": 4.49,
+      "max_value": 999.49,
+      "source_breakdown": {
+        "mobile": 278,
+        "payment_gateway": 282
+      },
+      "type_breakdown": {
+        "crash_report": 64,
+        "refund": 75,
+        "tap": 65,
+        "transaction": 72,
+        "push_click": 80,
+        "auth_check": 71,
+        "app_open": 69,
+        "chargeback": 64
+      }
+    },
+    {
+      "window_start": "00:36:25",
+      "window_end": "00:36:30",
+      "event_count": 789,
+      "avg_value": 497.87,
+      "min_value": 7.01,
+      "max_value": 998.4,
+      "source_breakdown": {
+        "cdn_log": 248,
+        "web": 267,
+        "iot_sensor": 274
+      },
+      "type_breakdown": {
+        "404_error": 48,
+        "form_submit": 66,
+        "humidity": 83,
+        "page_view": 66,
+        "cache_miss": 71,
+        "battery_low": 66,
+        "bandwidth_spike": 61,
+        "temperature": 61,
+        "cache_hit": 68,
+        "scroll": 59,
+        "motion_detect": 64,
+        "click": 76
+      }
+    },
+    {
+      "window_start": "00:36:25",
+      "window_end": "00:36:30",
+      "event_count": 557,
+      "avg_value": 520.66,
+      "min_value": 1.47,
+      "max_value": 999.52,
+      "source_breakdown": {
+        "mobile": 274,
+        "payment_gateway": 283
+      },
+      "type_breakdown": {
+        "push_click": 59,
+        "crash_report": 78,
+        "chargeback": 83,
+        "app_open": 63,
+        "transaction": 60,
+        "refund": 77,
+        "tap": 74,
+        "auth_check": 63
+      }
+    },
+    {
+      "window_start": "00:36:30",
+      "window_end": "00:36:35",
+      "event_count": 845,
+      "avg_value": 481.85,
+      "min_value": 1.2,
+      "max_value": 997.71,
+      "source_breakdown": {
+        "cdn_log": 272,
+        "web": 289,
+        "iot_sensor": 284
+      },
+      "type_breakdown": {
+        "cache_hit": 80,
+        "click": 66,
+        "humidity": 62,
+        "bandwidth_spike": 60,
+        "form_submit": 71,
+        "battery_low": 72,
+        "404_error": 59,
+        "temperature": 72,
+        "motion_detect": 78,
+        "scroll": 67,
+        "cache_miss": 73,
+        "page_view": 85
+      }
+    },
+    {
+      "window_start": "00:36:30",
+      "window_end": "00:36:35",
+      "event_count": 565,
+      "avg_value": 506.73,
+      "min_value": 1.87,
+      "max_value": 999.43,
+      "source_breakdown": {
+        "mobile": 286,
+        "payment_gateway": 279
+      },
+      "type_breakdown": {
+        "app_open": 77,
+        "transaction": 74,
+        "tap": 77,
+        "push_click": 72,
+        "crash_report": 60,
+        "refund": 68,
+        "auth_check": 76,
+        "chargeback": 61
+      }
+    },
+    {
+      "window_start": "00:36:35",
+      "window_end": "00:36:40",
+      "event_count": 492,
+      "avg_value": 502.29,
+      "min_value": 7.57,
+      "max_value": 999.75,
+      "source_breakdown": {
+        "mobile": 246,
+        "payment_gateway": 246
+      },
+      "type_breakdown": {
+        "crash_report": 55,
+        "chargeback": 66,
+        "app_open": 56,
+        "refund": 61,
+        "auth_check": 58,
+        "tap": 68,
+        "transaction": 61,
+        "push_click": 67
+      }
+    },
+    {
+      "window_start": "00:36:35",
+      "window_end": "00:36:40",
+      "event_count": 837,
+      "avg_value": 499.47,
+      "min_value": 1.76,
+      "max_value": 999.81,
+      "source_breakdown": {
+        "cdn_log": 271,
+        "web": 286,
+        "iot_sensor": 280
+      },
+      "type_breakdown": {
+        "bandwidth_spike": 71,
+        "form_submit": 65,
+        "humidity": 67,
+        "cache_miss": 64,
+        "click": 68,
+        "cache_hit": 79,
+        "temperature": 74,
+        "page_view": 70,
+        "battery_low": 66,
+        "motion_detect": 73,
+        "scroll": 83,
+        "404_error": 57
+      }
+    }
+  ]
+}
